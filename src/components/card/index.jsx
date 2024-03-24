@@ -9,6 +9,8 @@ import {
   IconButton,
 } from "@mui/material";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import { useDispatch, useSelector } from "react-redux";
+import { increaseViewCount } from "../store/blogSlice";
 
 const ViewCount = styled("span")({
   display: "flex",
@@ -16,9 +18,19 @@ const ViewCount = styled("span")({
 });
 
 export default function BlogCard({ blogData }) {
+  const dispatch = useDispatch();
+
+  const handleViewCount = () => {
+    dispatch(increaseViewCount(blogData.id));
+  };
+
   return (
     <Card sx={{ height: "400px" }}>
-      <Link to={`/blog/${blogData.id}`} style={{ textDecoration: "none" }}>
+      <Link
+        to={`/blog/${blogData.id}`}
+        style={{ textDecoration: "none" }}
+        onClick={handleViewCount}
+      >
         <CardActionArea>
           <CardMedia
             component="img"
@@ -35,7 +47,7 @@ export default function BlogCard({ blogData }) {
                 <IconButton size="small" disabled>
                   <RemoveRedEyeOutlinedIcon />
                 </IconButton>
-                100 views
+                {blogData.views}
               </Typography>
             </ViewCount>
             <Typography

@@ -25,6 +25,13 @@ export const BlogsStore = createSlice({
     setBlogs: (state, data) => {
       state.blogsData = data.payload;
     },
+    increaseViewCount: (state, action) => {
+      const id = action.payload;
+      const tempBlogs = state.blogsData.map((blog) =>
+        blog.id == id ? { ...blog, views: blog.views + 1 } : blog
+      );
+      state.blogsData = tempBlogs;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -34,7 +41,7 @@ export const BlogsStore = createSlice({
       })
       .addCase(fetchBlogsThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.blogsData = action.payload; // Assuming the API response has a "data" property
+        state.blogsData = action.payload.map((blog) => ({ ...blog, views: 0 }));
       })
       .addCase(fetchBlogsThunk.rejected, (state, action) => {
         state.loading = false;
@@ -43,6 +50,6 @@ export const BlogsStore = createSlice({
   },
 });
 
-export const { setBlogs } = BlogsStore.actions;
+export const { setBlogs, increaseViewCount } = BlogsStore.actions;
 
 export default BlogsStore.reducer;

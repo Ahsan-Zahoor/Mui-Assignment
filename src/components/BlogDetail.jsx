@@ -9,11 +9,18 @@ import {
 } from "@mui/material";
 import { useParams } from "react-router";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { fetchBlogById } from "../api";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const BlogPostPage = () => {
   const { blogId } = useParams();
   const [blog, setBlog] = useState({});
+
+  const blogCount = useSelector((state) => state.blogs.blogsData).find(
+    (blog) => blog.id === blogId
+  ).views;
 
   const getBlog = async () => {
     try {
@@ -30,6 +37,12 @@ const BlogPostPage = () => {
 
   return (
     <Container>
+      <Link to="/">
+        <IconButton>
+          <KeyboardBackspaceIcon />
+          Back to Blogs
+        </IconButton>
+      </Link>
       <Grid container justifyContent="center" alignItems="center" p={2} gap={3}>
         <Grid item xs={9}>
           <Typography variant="body2" color="grey" display="inline">
@@ -38,7 +51,7 @@ const BlogPostPage = () => {
               <IconButton size="small" disabled>
                 <RemoveRedEyeOutlinedIcon />
               </IconButton>
-              100 views
+              {blogCount ?? 0} views
             </Typography>
           </Typography>
         </Grid>

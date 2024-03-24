@@ -1,36 +1,26 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import { useSelector, useDispatch } from "react-redux";
 import { Container } from "@mui/material";
-import { fetchBlogs } from "../api";
 import { fetchBlogsThunk } from "./store/blogSlice";
 import BlogCard from "./card";
 
 export const Blogs = () => {
   const dispatch = useDispatch();
-  const { blogsData, loading, error } = useSelector((state) => state.blogs);
-
-  const [blogs, setBlogs] = useState([]);
-  const getAllBlogs = async () => {
-    try {
-      const { data } = await fetchBlogs();
-      setBlogs(data);
-    } catch (error) {
-      console.error("Error fetching blogs", error);
-    }
-  };
+  const { blogsData, loading } = useSelector((state) => state.blogs);
 
   useEffect(() => {
-    // getAllBlogs();
-    dispatch(fetchBlogsThunk());
+    if (!blogsData.length) {
+      dispatch(fetchBlogsThunk());
+    }
   }, []);
 
-  console.log("blogsData ", blogsData);
+  // console.log("blogsData blogs.jsx", blogsData);
 
   return (
     <Container sx={{ marginBottom: "50px" }}>
       <Grid container spacing={3}>
-        {blogs.map((blog, index) => (
+        {blogsData.map((blog, index) => (
           <Grid item xs={12} md={4} key={index}>
             <BlogCard blogData={blog} />
           </Grid>
