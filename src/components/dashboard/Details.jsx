@@ -4,8 +4,6 @@ import bgImage from "../../assets/images/Image.jpg";
 const OurBlog = () => {
   const blogPosts = [
     {
-      imageUrl: "/images/Image.jpg",
-      title: "Our Blog",
       article: "Diagnose Car Problems If You Don't Know Much About Cars.",
       description:
         "We provide a full range of front end mechanical repairs for all makes and models of cars, no matter the cause. This includes, We provide a full range of front end mechanical.",

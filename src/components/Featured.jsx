@@ -1,7 +1,7 @@
 import { Grid, IconButton, Typography } from "@mui/material";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-// import featuredImage from "../../assets/images/featured.jpg";
+import featuredImage from "../assets/images/featured.jpg";
 
 export const Featured = () => {
   return (
@@ -15,7 +15,7 @@ export const Featured = () => {
       <Grid item xs={9} sx={{ backgroundColor: "white" }} p={2}>
         <Grid container sx={{ backgroundColor: "white" }} p={3}>
           <Grid item xs={4}>
-            {/* <img src={featuredImage} alt="Featured img" /> */}
+            <img src={featuredImage} alt="Featured img" />
           </Grid>
           <Grid item container xs={8}>
             <Grid item xs={6}>
