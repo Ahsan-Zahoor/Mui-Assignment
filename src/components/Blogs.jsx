@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
-import BlogCard from "./card";
-import { fetchBlogs } from "../api";
+import { useSelector, useDispatch } from "react-redux";
 import { Container } from "@mui/material";
+import { fetchBlogs } from "../api";
+import { fetchBlogsThunk } from "./store/blogSlice";
+import BlogCard from "./card";
 
 export const Blogs = () => {
+  const dispatch = useDispatch();
+  const { blogsData, loading, error } = useSelector((state) => state.blogs);
+
   const [blogs, setBlogs] = useState([]);
   const getAllBlogs = async () => {
     try {
@@ -16,8 +21,11 @@ export const Blogs = () => {
   };
 
   useEffect(() => {
-    getAllBlogs();
+    // getAllBlogs();
+    dispatch(fetchBlogsThunk());
   }, []);
+
+  console.log("blogsData ", blogsData);
 
   return (
     <Container sx={{ marginBottom: "50px" }}>
