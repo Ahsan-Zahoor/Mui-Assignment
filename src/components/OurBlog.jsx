@@ -4,13 +4,6 @@ import bgImage from "../assets/images/Image.jpg";
 import { Link } from "react-router-dom";
 
 const OurBlog = () => {
-  const blogPosts = [
-    {
-      article: "Diagnose Car Problems If You Don't Know Much About Cars.",
-      description:
-        "We provide a full range of front end mechanical repairs for all makes and models of cars, no matter the cause. This includes, We provide a full range of front end mechanical.",
-    },
-  ];
   const theme = useTheme();
 
   return (
@@ -54,10 +47,12 @@ const OurBlog = () => {
             color="white"
             fontWeight="700"
           >
-            {blogPosts[0].article}
+            Diagnose Car Problems If You Don't Know Much About Cars.
           </Typography>
           <Typography variant="body1" color="white" fontWeight="400">
-            {blogPosts[0].description}
+            We provide a full range of front end mechanical repairs for all
+            makes and models of cars, no matter the cause. This includes, We
+            provide a full range of front end mechanical.
           </Typography>
         </Grid>
       </Grid>
