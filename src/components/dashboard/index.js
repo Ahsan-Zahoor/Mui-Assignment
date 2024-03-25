@@ -1,5 +1,5 @@
 import React from "react";
-import OurBlog from "./Details";
+import OurBlog from "../OurBlog.jsx";
 import { Featured } from "../Featured";
 import { Blogs } from "../Blogs";
 

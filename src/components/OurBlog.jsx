@@ -1,5 +1,5 @@
 import { Grid, Typography } from "@mui/material";
-import bgImage from "../../assets/images/Image.jpg";
+import bgImage from "../assets/images/Image.jpg";
 
 const OurBlog = () => {
   const blogPosts = [
@@ -14,7 +14,8 @@ const OurBlog = () => {
     <Grid container>
       <Grid
         item
-        xs={6}
+        xs={12}
+        md={6}
         height="400px"
         sx={{ backgroundImage: `url(${bgImage})` }}
         container
@@ -27,17 +28,23 @@ const OurBlog = () => {
       </Grid>
       <Grid
         item
-        xs={6}
-        sx={{ backgroundColor: "#1E1B1B" }}
+        xs={12}
+        md={6}
         container
         alignContent="center"
         gap={5}
         padding={10}
+        bgcolor={"#1E1B1B"}
       >
-        <Typography variant="h4" sx={{ fontWeight: "700" }} color="white">
+        <Typography
+          variant="h4"
+          sx={{ fontWeight: "700" }}
+          color="white"
+          fontWeight="700"
+        >
           {blogPosts[0].article}
         </Typography>
-        <Typography variant="body1" sx={{ fontWeight: "400" }} color="white">
+        <Typography variant="body1" color="white" fontWeight="400">
           {blogPosts[0].description}
         </Typography>
       </Grid>
@@ -46,6 +53,3 @@ const OurBlog = () => {
 };
 
 export default OurBlog;
-
-//typography fontweight
-//grid bg color

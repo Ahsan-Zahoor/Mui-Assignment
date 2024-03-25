@@ -7,18 +7,18 @@ export const Featured = () => {
   return (
     <Grid
       container
-      sx={{ backgroundColor: "grey" }}
       p={10}
       justifyContent="center"
       alignItems="center"
+      bgcolor="gray"
     >
-      <Grid item xs={9} sx={{ backgroundColor: "white" }} p={2}>
+      <Grid item xs={12} md={9} sx={{ backgroundColor: "white" }} p={2}>
         <Grid container sx={{ backgroundColor: "white" }} p={3}>
-          <Grid item xs={4}>
+          <Grid item xs={12} md={4}>
             <img src={featuredImage} alt="Featured img" />
           </Grid>
-          <Grid item container xs={8}>
-            <Grid item xs={6}>
+          <Grid item container xs={12} md={8}>
+            <Grid item xs={12} md={6}>
               <Typography variant="body2" color="grey" display="inline">
                 Posted on October 6th 2021
                 <Typography display="inline" ml={2}>
@@ -29,7 +29,7 @@ export const Featured = () => {
                 </Typography>
               </Typography>
             </Grid>
-            <Grid item xs={6} paddingRight={2} textAlign="end">
+            <Grid item xs={12} md={6} paddingRight={2} textAlign="end">
               <Typography
                 variant="body2"
                 color="#ff6433"

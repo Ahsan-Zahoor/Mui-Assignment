@@ -2,17 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Dashboard from "./components/dashboard";
 import BlogDetail from "./components/BlogDetail";
-// import theme from "./theme";
+import PropertySearchTool from "./components/PropertySearchTool";
 
 const theme = createTheme({
-  // palette: {
-  //   primary: {
-  //     main: "#0052cc",
-  //   },
-  //   secondary: {
-  //     main: "#edf2ff",
-  //   },
-  // },
   typography: {
     fontFamily: "manrope",
     h1: {
@@ -59,6 +51,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/blog/:blogId" element={<BlogDetail />} />
+            <Route path="/propertySearch" element={<PropertySearchTool />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
