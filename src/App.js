@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Dashboard from "./components/dashboard";
 import BlogDetail from "./components/BlogDetail";
 import PropertySearchTool from "./components/PropertySearchTool";
+import "./App.css";
 
 const theme = createTheme({
   typography: {

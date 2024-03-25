@@ -18,6 +18,7 @@ import { basedOnTypes, setSelected } from "./store/propertyDataSlice";
 const PropertySearchTool = () => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   const dispatch = useDispatch();
   const propertyData = useSelector((state) => state.property.propertyTypeData);
   const options = ["All", "Flat", "Terraced house", "Semi-detached"];
@@ -96,13 +97,18 @@ const PropertySearchTool = () => {
               textAlign: "center",
               color: "black",
               backgroundColor: "yellow",
+              [theme.breakpoints.down("sm")]: {
+                marginTop: "10px",
+                marginLeft: "32%",
+              },
               [theme.breakpoints.down("md")]: {
                 marginTop: "10px",
-                marginLeft: "30%",
+                marginLeft: "40%",
               },
               [theme.breakpoints.up("md")]: {
                 marginLeft: "10px",
                 width: "15%",
+                height: "59%",
               },
             }}
             marginRight={2}

@@ -42,12 +42,12 @@ export default function SelectionTable({ rows }) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell align="right">Select</TableCell>
-            <TableCell align="right">Address</TableCell>
-            <TableCell align="right">Postcode</TableCell>
-            <TableCell align="right">Property type</TableCell>
-            <TableCell align="right">Number of rooms</TableCell>
-            <TableCell align="right">Floor area (m^2)</TableCell>
+            <TableCell align="center">Select</TableCell>
+            <TableCell align="center">Address</TableCell>
+            <TableCell align="center">Postcode</TableCell>
+            <TableCell align="center">Property type</TableCell>
+            <TableCell align="center">Number of rooms</TableCell>
+            <TableCell align="center">Floor area (m^2)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -69,13 +69,11 @@ export default function SelectionTable({ rows }) {
                   checked={selected.map((row) => row.id).includes(row.id)}
                 />
               </TableCell>
-              <TableCell component="th" scope="row">
-                {row.address}
-              </TableCell>
-              <TableCell align="right">{row.postCode}</TableCell>
-              <TableCell align="right">{row.propertyType}</TableCell>
-              <TableCell align="right">{row.noOfRooms}</TableCell>
-              <TableCell align="right">{row.floorArea}</TableCell>
+              <TableCell align="center">{row.address}</TableCell>
+              <TableCell align="center">{row.postCode}</TableCell>
+              <TableCell align="center">{row.propertyType}</TableCell>
+              <TableCell align="center">{row.noOfRooms}</TableCell>
+              <TableCell align="center">{row.floorArea}</TableCell>
             </TableRow>
           ))}
         </TableBody>

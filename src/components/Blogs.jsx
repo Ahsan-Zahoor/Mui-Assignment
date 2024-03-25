@@ -7,7 +7,7 @@ import BlogCard from "./card";
 
 export const Blogs = () => {
   const dispatch = useDispatch();
-  const { blogsData, loading } = useSelector((state) => state.blogs);
+  const { blogsData } = useSelector((state) => state.blogs);
 
   const [blogsPaginate, setBlogsPaginate] = useState([]);
   const [paginateCount, setPaginateCount] = useState(6);

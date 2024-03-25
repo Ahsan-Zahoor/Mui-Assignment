@@ -27,16 +27,16 @@ const BlogPostPage = () => {
     (blog) => blog.id === blogId
   ).views;
 
-  const getBlog = async () => {
-    try {
-      const { data } = await fetchBlogById(blogId);
-      setBlog(data);
-    } catch (error) {
-      console.error("Error fetching blog", error);
-    }
-  };
-
   useEffect(() => {
+    const getBlog = async () => {
+      try {
+        const { data } = await fetchBlogById(blogId);
+        setBlog(data);
+      } catch (error) {
+        console.error("Error fetching blog", error);
+      }
+    };
+
     getBlog();
   }, []);
 

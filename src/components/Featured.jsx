@@ -27,7 +27,7 @@ export const Featured = () => {
             <img
               src={featuredImage}
               alt="Featured img"
-              width={isSmallScreen ? 200 : "100%"}
+              width={isSmallScreen ? 200 : "90%"}
             />
           </Grid>
           <Grid item container xs={12} md={8}>

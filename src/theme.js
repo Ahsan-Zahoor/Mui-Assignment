@@ -2,7 +2,7 @@ import { createTheme } from "@mui/material/styles";
 
 const muiFiveTheme = createTheme({
   typography: {
-    fontFamily: "manrope",
+    fontFamily: "Manrope",
     h1: {
       fontSize: "64px",
     },
