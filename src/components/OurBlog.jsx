@@ -1,5 +1,7 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, IconButton, Typography } from "@mui/material";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import bgImage from "../assets/images/Image.jpg";
+import { Link } from "react-router-dom";
 
 const OurBlog = () => {
   const blogPosts = [
@@ -26,27 +28,28 @@ const OurBlog = () => {
           Our Blog
         </Typography>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        md={6}
-        container
-        alignContent="center"
-        gap={5}
-        padding={10}
-        bgcolor={"#1E1B1B"}
-      >
-        <Typography
-          variant="h4"
-          sx={{ fontWeight: "700" }}
-          color="white"
-          fontWeight="700"
-        >
-          {blogPosts[0].article}
-        </Typography>
-        <Typography variant="body1" color="white" fontWeight="400">
-          {blogPosts[0].description}
-        </Typography>
+      <Grid item xs={12} md={6} container bgcolor={"#1E1B1B"}>
+        <Grid item xs={12} sx={{ textAlign: "end" }}>
+          <Link to="/">
+            <IconButton sx={{ color: "white", cursor: "pointer" }}>
+              Go to Property Section
+              <ArrowForwardIcon />
+            </IconButton>
+          </Link>
+        </Grid>
+        <Grid item container xs={12} padding={10} alignContent="center" gap={5}>
+          <Typography
+            variant="h4"
+            sx={{ fontWeight: "700" }}
+            color="white"
+            fontWeight="700"
+          >
+            {blogPosts[0].article}
+          </Typography>
+          <Typography variant="body1" color="white" fontWeight="400">
+            {blogPosts[0].description}
+          </Typography>
+        </Grid>
       </Grid>
     </Grid>
   );

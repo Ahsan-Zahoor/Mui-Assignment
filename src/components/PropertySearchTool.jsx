@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Button, Grid, TextField, Typography } from "@mui/material";
+import { Button, Grid, IconButton, TextField, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import BasicTable from "./table/basicTable";
 import SelectionTable from "./table/selectionTable";
 import { basedOnTypes, setSelected } from "./store/propertyDataSlice";
@@ -31,9 +33,15 @@ const PropertySearchTool = () => {
         xs={12}
         md={3}
         container
-        justifyContent="center"
-        alignItems="center"
+        // justifyContent="center"
+        // alignItems="center"
       >
+        <Link to="/">
+          <IconButton>
+            <KeyboardBackspaceIcon />
+            Back to Blogs
+          </IconButton>
+        </Link>
         <Grid item xs={12} textAlign="center">
           <Typography variant="h6">Property Types</Typography>
 
