@@ -25,17 +25,21 @@ const PropertySearchTool = () => {
 
   const [selectedOption, setSelectedOptions] = useState("All");
   const [query, setQuery] = useState("");
+  const [search, setSearch] = useState(false);
 
   const filteredData = useMemo(() => {
+    console.log("in memo");
     return propertyData.filter((ele) =>
       ele.address.toLowerCase().includes(query.toLowerCase())
     );
-  }, [propertyData, query]);
+  }, [propertyData, search]);
 
   useEffect(() => {
     dispatch(basedOnTypes(selectedOption));
     dispatch(setSelected([]));
   }, [selectedOption]);
+
+  console.log(search);
 
   return (
     <Grid container>
@@ -114,6 +118,7 @@ const PropertySearchTool = () => {
             marginRight={2}
             filteredData
             size="large"
+            onClick={() => setSearch((prev) => !prev)}
           >
             Search
           </Button>
