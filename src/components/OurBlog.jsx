@@ -1,4 +1,4 @@
-import { Grid, IconButton, Typography } from "@mui/material";
+import { Grid, IconButton, Typography, useTheme } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import bgImage from "../assets/images/Image.jpg";
 import { Link } from "react-router-dom";
@@ -11,6 +11,7 @@ const OurBlog = () => {
         "We provide a full range of front end mechanical repairs for all makes and models of cars, no matter the cause. This includes, We provide a full range of front end mechanical.",
     },
   ];
+  const theme = useTheme();
 
   return (
     <Grid container>
@@ -18,8 +19,15 @@ const OurBlog = () => {
         item
         xs={12}
         md={6}
-        height="400px"
-        sx={{ backgroundImage: `url(${bgImage})` }}
+        sx={{
+          backgroundImage: `url(${bgImage})`,
+          [theme.breakpoints.down("md")]: {
+            height: "400px",
+          },
+          [theme.breakpoints.up("md")]: {
+            height: "auto",
+          },
+        }}
         container
         justifyContent="center"
         alignItems="center"
@@ -30,9 +38,11 @@ const OurBlog = () => {
       </Grid>
       <Grid item xs={12} md={6} container bgcolor={"#1E1B1B"}>
         <Grid item xs={12} sx={{ textAlign: "end" }}>
-          <Link to="/">
+          <Link to="/propertySearch">
             <IconButton sx={{ color: "white", cursor: "pointer" }}>
-              Go to Property Section
+              <Typography variant="body1" color="white" display="inline">
+                Go to Property Section
+              </Typography>
               <ArrowForwardIcon />
             </IconButton>
           </Link>

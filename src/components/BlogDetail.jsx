@@ -6,6 +6,8 @@ import {
   Box,
   styled,
   IconButton,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { useParams } from "react-router";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
@@ -16,6 +18,9 @@ import { Link } from "react-router-dom";
 
 const BlogPostPage = () => {
   const { blogId } = useParams();
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   const [blog, setBlog] = useState({});
 
   const blogCount = useSelector((state) => state.blogs.blogsData).find(
@@ -36,7 +41,7 @@ const BlogPostPage = () => {
   }, []);
 
   return (
-    <Container>
+    <Container p={0}>
       <Link to="/">
         <IconButton>
           <KeyboardBackspaceIcon />
@@ -56,7 +61,9 @@ const BlogPostPage = () => {
           </Typography>
         </Grid>
         <Grid item xs={9}>
-          <Typography variant="h1">{blog.Title}</Typography>
+          <Typography variant={isSmallScreen ? "h3" : "h1"}>
+            {blog.Title}
+          </Typography>
         </Grid>
         <Grid item xs={9}>
           <Typography variant="body1">{blog.Article}</Typography>
@@ -65,7 +72,12 @@ const BlogPostPage = () => {
           <img src={blog.Image} alt="blog post" width="100%" height="450px" />
         </Grid>
         <Grid item xs={9}>
-          <Typography variant="h2" sx={{ fontWeight: "600" }} mb={2} mt={2}>
+          <Typography
+            variant={isSmallScreen ? "h4" : "h3"}
+            sx={{ fontWeight: "600" }}
+            mb={2}
+            mt={2}
+          >
             This is a blog post headline
           </Typography>
           <Typography variant="body1">{blog.Article}</Typography>

@@ -1,5 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Button, Grid, IconButton, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Grid,
+  IconButton,
+  TextField,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
@@ -8,6 +16,8 @@ import SelectionTable from "./table/selectionTable";
 import { basedOnTypes, setSelected } from "./store/propertyDataSlice";
 
 const PropertySearchTool = () => {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const dispatch = useDispatch();
   const propertyData = useSelector((state) => state.property.propertyTypeData);
   const options = ["All", "Flat", "Terraced house", "Semi-detached"];
@@ -28,25 +38,21 @@ const PropertySearchTool = () => {
 
   return (
     <Grid container>
-      <Grid
-        item
-        xs={12}
-        md={3}
-        container
-        // justifyContent="center"
-        // alignItems="center"
-      >
+      <Grid item xs={12} md={3} container>
         <Link to="/">
           <IconButton>
             <KeyboardBackspaceIcon />
-            Back to Blogs
+            <Typography variant="body1" display="inline">
+              Back to Home
+            </Typography>
           </IconButton>
         </Link>
         <Grid item xs={12} textAlign="center">
           <Typography variant="h6">Property Types</Typography>
 
-          {options.map((option) => (
+          {options.map((option, index) => (
             <Typography
+              key={index}
               variant="h6"
               component="div"
               sx={{
@@ -60,23 +66,44 @@ const PropertySearchTool = () => {
           ))}
         </Grid>
       </Grid>
-      <Grid item container xs={12} md={9} spacing={5} p={15}>
+      <Grid
+        item
+        container
+        xs={12}
+        md={9}
+        spacing={5}
+        p={isSmallScreen ? 3 : 15}
+      >
         <Grid item xs={12}>
           <Typography variant="h6">Search</Typography>
           <TextField
             id="outlined-basic"
             label="Address"
             variant="outlined"
-            sx={{ width: "85%" }}
+            sx={{
+              [theme.breakpoints.down("md")]: {
+                width: "100%",
+              },
+              [theme.breakpoints.up("md")]: {
+                width: "80%",
+              },
+            }}
             onChange={(e) => setQuery(e.target.value)}
           ></TextField>
           <Button
             variant="contained"
             sx={{
               textAlign: "center",
-              marginLeft: "6%",
               color: "black",
               backgroundColor: "yellow",
+              [theme.breakpoints.down("md")]: {
+                marginTop: "10px",
+                marginLeft: "30%",
+              },
+              [theme.breakpoints.up("md")]: {
+                marginLeft: "10px",
+                width: "15%",
+              },
             }}
             marginRight={2}
             filteredData
