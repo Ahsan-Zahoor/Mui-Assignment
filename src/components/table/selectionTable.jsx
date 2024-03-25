@@ -7,12 +7,14 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelected } from "../store/propertyDataSlice";
 
 export default function SelectionTable({ rows }) {
   const dispatch = useDispatch();
   const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const selected = useSelector((state) => state.property.selectedOptions);
 
   const handleClick = (id) => {
     const selectedIndex = selectedOptions.indexOf(id);
@@ -55,7 +57,6 @@ export default function SelectionTable({ rows }) {
               hover
               onClick={() => handleClick(row.id)}
               role="checkbox"
-              //   aria-checked={isItemSelected}
               tabIndex={-1}
               sx={{
                 "&:last-child td, &:last-child th": { border: 0 },
@@ -65,10 +66,7 @@ export default function SelectionTable({ rows }) {
               <TableCell padding="checkbox">
                 <Checkbox
                   color="primary"
-                  //   checked={isItemSelected}
-                  //   inputProps={{
-                  //     "aria-labelledby": labelId,
-                  //   }}
+                  checked={selected.map((row) => row.id).includes(row.id)}
                 />
               </TableCell>
               <TableCell component="th" scope="row">

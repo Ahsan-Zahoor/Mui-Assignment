@@ -46,6 +46,7 @@ export const PropertyDataStore = createSlice({
       },
     ],
     selectedOptions: [],
+    propertyTypeData: [],
   },
   reducers: {
     setSelected: (state, data) => {
@@ -54,9 +55,19 @@ export const PropertyDataStore = createSlice({
       );
       state.selectedOptions = selected;
     },
+    basedOnTypes: (state, data) => {
+      if (data.payload === "All") {
+        state.propertyTypeData = state.propertyData;
+        return;
+      }
+      const selected = state.propertyData.filter(
+        (row) => row.propertyType === data.payload
+      );
+      state.propertyTypeData = selected;
+    },
   },
 });
 
-export const { setSelected } = PropertyDataStore.actions;
+export const { setSelected, basedOnTypes } = PropertyDataStore.actions;
 
 export default PropertyDataStore.reducer;
